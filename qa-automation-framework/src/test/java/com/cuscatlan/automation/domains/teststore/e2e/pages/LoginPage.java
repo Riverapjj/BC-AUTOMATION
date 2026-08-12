@@ -10,6 +10,7 @@ public class LoginPage {
     private final By txtLoginEmail = By.id("field-email");
     private final By txtLoginPwd = By.id("field-password");
     private final By btnSignIn = By.id("submit-login");
+    private final By msgAuth = By.className("alert-danger");
 
     public LoginPage (WebDriver driver) {
         this.elementActions = new ElementActions(driver);
@@ -31,5 +32,9 @@ public class LoginPage {
         enterEmail(email);
         enterPassword(pwd);
         clickSignIn();
+    }
+
+    public String getAuthMsg () {
+        return elementActions.getText(msgAuth);
     }
 }
