@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -23,6 +24,16 @@ public class ElementActions {
         wait.until(
                 ExpectedConditions.elementToBeClickable(locator)
         ).click();
+    }
+
+    public void selectByVisibleText (By locator, String text) {
+        WebElement element = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(locator)
+        );
+
+        Select select = new Select(element);
+
+        select.selectByVisibleText(text);
     }
 
     public void type(By locator, String text) {
