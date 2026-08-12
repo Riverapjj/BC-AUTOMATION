@@ -13,11 +13,12 @@ import java.util.Properties;
 public class BaseE2ETest {
 
     protected WebDriver driver;
+    protected Properties properties;
 
     @BeforeMethod
     public void setUp() throws IOException {
 
-        Properties properties = new Properties();
+        properties = new Properties();
 
         try (InputStream input = getClass()
                 .getClassLoader()

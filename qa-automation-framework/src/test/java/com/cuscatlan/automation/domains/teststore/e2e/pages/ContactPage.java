@@ -9,11 +9,11 @@ public class ContactPage {
     private final ElementActions elementActions;
 
     private final By pageTitle = By.tagName("h3");
-    private final By subject = By.id("id_contact");
-    private final By email = By.id("email");
-    private final By message = By.id("contactform-message");
-    private final By sendButton = By.name("submitMessage");
-    private final By errorMessage = By.className("alert-danger");
+    private final By selectSubject = By.id("id_contact");
+    private final By txtEmail = By.id("email");
+    private final By txtMessage = By.id("contactform-message");
+    private final By btnSend = By.name("submitMessage");
+    private final By msgError = By.className("alert-danger");
 
     public ContactPage (WebDriver driver) {
         this.elementActions = new ElementActions(driver);
@@ -24,22 +24,34 @@ public class ContactPage {
     }
 
     public boolean isSubjectDisplayed () {
-        return elementActions.isDisplayed(subject);
+        return elementActions.isDisplayed(selectSubject);
     }
 
     public boolean isEmailDisplayed () {
-        return elementActions.isDisplayed(email);
+        return elementActions.isDisplayed(txtEmail);
     }
 
     public boolean isMessageDisplayed () {
-        return elementActions.isDisplayed(message);
+        return elementActions.isDisplayed(txtMessage);
     }
 
     public void clickSendButton () {
-        elementActions.click(sendButton);
+        elementActions.click(btnSend);
     }
 
     public String getErrorMessage () {
-        return elementActions.getText(errorMessage);
+        return elementActions.getText(msgError);
+    }
+
+    public void selectSubject (String subjectOption) {
+        elementActions.selectByVisibleText(selectSubject, subjectOption);
+    }
+
+    public void enterEmail(String email) {
+        elementActions.type(txtEmail, email);
+    }
+
+    public void enterMessage(String message) {
+        elementActions.type(txtMessage, message);
     }
 }
