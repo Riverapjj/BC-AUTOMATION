@@ -26,4 +26,3 @@ The project follows a GitFlow-based branching strategy:
 - `main`
 - `develop`
 - `feature/*`
-- `release/*`
