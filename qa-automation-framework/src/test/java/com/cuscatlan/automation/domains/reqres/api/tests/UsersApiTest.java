@@ -1,6 +1,7 @@
 package com.cuscatlan.automation.domains.reqres.api.tests;
 
 import com.cuscatlan.automation.core.base.BaseAPITest;
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -8,9 +9,9 @@ import static org.hamcrest.Matchers.*;
 
 public class UsersApiTest extends BaseAPITest {
 
-    @Test
+    @Test(testName = "Get existing user")
+    @Description("Validating if existing user is been returned")
     private void getUser () {
-
         given()
                 .header("x-api-key", apiKey)
                 .when()
@@ -24,7 +25,8 @@ public class UsersApiTest extends BaseAPITest {
 
     }
 
-    @Test
+    @Test(testName = "Get non-existing user")
+    @Description("Validate that requesting a non-existing user returns HTTP 404 with an empty JSON response")
     private void negativeScenario () {
 
         given()

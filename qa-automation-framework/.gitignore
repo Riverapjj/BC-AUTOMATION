@@ -3,6 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 src/test/resources/config/qa.properties
+allure-results/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

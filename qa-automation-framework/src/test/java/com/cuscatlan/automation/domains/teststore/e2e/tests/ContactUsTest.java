@@ -17,8 +17,10 @@ public class ContactUsTest extends BaseE2ETest {
         Header header = new Header(driver);
         ContactPage contactPage = new ContactPage(driver);
 
+        takeScreenshot("Before click Contact Us");
         header.clickContactUs();
 
+        takeScreenshot("Contact Us page");
         Assert.assertTrue(contactPage.isTitleDisplayed(), "We are in contact us page");
         Assert.assertTrue(contactPage.isSubjectDisplayed(), "Subject field is displayed");
         Assert.assertTrue(contactPage.isEmailDisplayed(), "Email field is displayed");
@@ -29,6 +31,7 @@ public class ContactUsTest extends BaseE2ETest {
         String errorMessage = contactPage.getErrorMessage();
 
         Assert.assertFalse(errorMessage.isEmpty(), "Error message is displayed");
+        takeScreenshot("Error message displayed");
         System.out.println(errorMessage);
 
     }
@@ -38,12 +41,16 @@ public class ContactUsTest extends BaseE2ETest {
 
         Header header = new Header(driver);
         LoginPage loginPage = new LoginPage(driver);
-        ContactPage contactPage = new ContactPage(driver);
 
+        takeScreenshot("Before click Sign In");
         header.clickSignIn();
-        loginPage.login(properties.getProperty("test.username"), properties.getProperty("test.password"));
+
+        loginPage.enterCredentials(properties.getProperty("test.username"), properties.getProperty("test.password"));
+        takeScreenshot("Credentials entered");
+        loginPage.clickSignIn();
 
         Assert.assertTrue(header.isUserLoggedIn(), "User should be logged in");
+        takeScreenshot("User is logged in");
         System.out.println(header.getUserName());
 
         header.clickContactUs();
@@ -55,16 +62,24 @@ public class ContactUsTest extends BaseE2ETest {
         Header header = new Header(driver);
         LoginPage loginPage = new LoginPage(driver);
 
+        takeScreenshot("Before click Sign In");
         header.clickSignIn();
-        loginPage.login("josue@banco.com", "123456");
+        loginPage.enterCredentials("josue@banco.com", "123456");
+        takeScreenshot("Credentials entered");
+        loginPage.clickSignIn();
 
         String msgAuth = loginPage.getAuthMsg();
 
         Assert.assertFalse(msgAuth.isEmpty(), "Authentication failed");
+        takeScreenshot("Unsuccessful log in");
         System.out.println(msgAuth);
 
-        loginPage.login(properties.getProperty("test.username"), properties.getProperty("test.password"));
+        loginPage.enterCredentials(properties.getProperty("test.username"), properties.getProperty("test.password"));
+        takeScreenshot("Credentials entered");
+        loginPage.clickSignIn();
+
         Assert.assertTrue(header.isUserLoggedIn(), "User should be logged in");
+        takeScreenshot("Successful log in");
         System.out.println(header.getUserName());
     }
 }
