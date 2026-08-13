@@ -72,7 +72,7 @@ public class ContactUsTest extends BaseE2ETest {
 
         Assert.assertFalse(msgAuth.isEmpty(), "Authentication failed");
         takeScreenshot("Unsuccessful log in");
-        System.out.println(msgAuth);
+        //System.out.println(msgAuth);
 
         loginPage.enterCredentials(properties.getProperty("test.username"), properties.getProperty("test.password"));
         takeScreenshot("Credentials entered");
@@ -81,5 +81,6 @@ public class ContactUsTest extends BaseE2ETest {
         Assert.assertTrue(header.isUserLoggedIn(), "User should be logged in");
         takeScreenshot("Successful log in");
         System.out.println(header.getUserName());
+        takeScreenshot("Test ss");
     }
 }
