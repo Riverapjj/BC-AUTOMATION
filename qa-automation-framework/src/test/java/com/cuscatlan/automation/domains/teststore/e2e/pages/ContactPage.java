@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 public class ContactPage {
 
     private final ElementActions elementActions;
-
     private final By pageTitle = By.tagName("h3");
     private final By selectSubject = By.id("id_contact");
     private final By txtEmail = By.id("email");
